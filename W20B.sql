@@ -29,7 +29,7 @@ CREATE TABLE `exploits` (
   PRIMARY KEY (`id`),
   KEY `exploits_FK` (`user_id`),
   CONSTRAINT `exploits_FK` FOREIGN KEY (`user_id`) REFERENCES `hackers` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `exploits` (
 
 LOCK TABLES `exploits` WRITE;
 /*!40000 ALTER TABLE `exploits` DISABLE KEYS */;
-INSERT INTO `exploits` VALUES (1,'Helooo everyone from hacker J',1),(2,'Hello V',4),(3,'HELLO J',1),(4,'Hello V from J',1),(5,'greetings from F',3),(6,'greetings from A',2),(7,'greetings from V',4),(8,'helloooooooo V from J',1),(9,'Hellooooo F from J',1),(10,'heli J from bubble',6),(11,'Hi bubble from J',1),(12,'BYE FROM J',1),(13,'HIIIIIIIIIIIIIIIII',1),(14,'helo F ',1),(15,'exploit got hacked',1);
+INSERT INTO `exploits` VALUES (1,'Helooo everyone from hacker J',1),(2,'Hello V',4),(3,'HELLO J',1),(4,'Hello V from J',1),(5,'greetings from F',3),(6,'greetings from A',2),(7,'greetings from V',4),(8,'helloooooooo V from J',1),(9,'Hellooooo F from J',1),(10,'heli J from bubble',6),(11,'Hi bubble from J',1),(12,'BYE FROM J',1),(13,'HIIIIIIIIIIIIIIIII',1),(14,'helo F ',1),(15,'exploit got hacked',1),(16,'last updation',1),(17,'last exploit from J',1);
 /*!40000 ALTER TABLE `exploits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-07 15:44:49
+-- Dump completed on 2020-11-07 15:54:41

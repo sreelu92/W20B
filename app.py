@@ -45,6 +45,7 @@ def update_exploits():
         conn.commit()    
         if(cursor.rowcount==1):
             print("Exploit updated successfully")
+            print("---------------------------------")
         elif(cursor.rowcount==0):
             print("Update failed")
 
@@ -59,6 +60,7 @@ try:
     cursor=conn.cursor()
     print("1.Login")
     print("2.Sign up")
+    print("-------------------------------------")
     choice= input("Enter your choice: ")
     if(choice=="1"):
         alias=input("Enter your alias: ")
