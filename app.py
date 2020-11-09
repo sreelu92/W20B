@@ -1,58 +1,12 @@
 import dbcreds
 import mariadb
+import dataFunctions
 
 conn=None
 cursor=None
 
-def insert_data():
-    try:
-        content=input("Write your content: ")
-        cursor.execute("INSERT INTO exploits(content,user_id) VALUES(?,?)", [content,user[0],])
-        conn.commit()
-        if(cursor.rowcount==1):
-            print(" Exploit created successfully")
-            print("-----------------------------")
-    except mariadb.ProgrammingError:
-        print("Operation failed")
-        
-def select_data():
-    try:
-        cursor.execute("SELECT content FROM exploits WHERE user_id=?",[user[0],])
-        users=cursor.fetchall()
-        for user_list in users:
-            print(user_list[0])
-            print("--------------------------------")
-    except mariadb.ProgrammingError:
-        print("Operation failed")
-       
-def get_alldata():
-    try:
-        cursor.execute("SELECT * FROM exploits ex INNER JOIN hackers ha ON ex.user_id=ha.id WHERE user_id!=?",[user[0],])   
-        users=cursor.fetchall()
-        for user_list in users:
-            print("Alias: "+str(user_list[4]))
-                
-            print("Content: "+str(user_list[1]))
-            print("------------------")
-    except mariadb.ProgrammingError:
-        print("Operation failed")
 
-def update_exploits():
-    try:
-        id=input("Enter your exploit's id to update: ")
-        content=input("Enter the content to update: ")
-        cursor.execute("UPDATE exploits SET content=? WHERE id=?", [content,id])
-        conn.commit()    
-        if(cursor.rowcount==1):
-            print("Exploit updated successfully")
-           
-        elif(cursor.rowcount==0):
-            print("Update failed")
-        print("---------------------------------")
-
-    except mariadb.ProgrammingError:
-        print("Operation failed")
-def user_choice():
+def user_choice(users):
     try:
         while True:
             print("1.Enter a new exploit")
@@ -62,13 +16,13 @@ def user_choice():
             print("5.Exit")
             option=input("Enter your option: ")
             if(option=="1"):
-                insert_data()
+                dataFunctions.insert_data(users)
             elif(option=="2"):
-                select_data()
+                dataFunctions.select_data(users)
             elif(option=="3"):
-                get_alldata()
+                dataFunctions.get_alldata(users)
             elif(option=="4"):
-                update_exploits()
+                dataFunctions.update_exploits()
             elif(option=="5"):
                 break
             else:
@@ -92,7 +46,7 @@ try:
             user[0]
         if(cursor.rowcount==1):
             print("Login Success")
-            user_choice()
+            user_choice(users)
             
 
 
@@ -110,7 +64,7 @@ try:
             users=cursor.fetchall()
             for user in users:
                 user[0]
-            user_choice()
+            user_choice(users)
         else:
             print("Something went wrong")
 
